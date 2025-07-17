@@ -18,7 +18,13 @@
         <license/>
     </licenses>
     <developers>
-        <developer/>
+        <!--<developer>
+            <id>100001</id>>
+            <name>Ravi Shekhar</name>
+            <timezone>CST</timezone>
+        </developer>
+-->
+        <developer></developer>
     </developers>
     <scm>
         <connection/>
