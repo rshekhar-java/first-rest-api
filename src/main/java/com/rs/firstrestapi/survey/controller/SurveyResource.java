@@ -1,5 +1,6 @@
 package com.rs.firstrestapi.survey.controller;
 
+import com.rs.firstrestapi.survey.model.Question;
 import com.rs.firstrestapi.survey.model.Survey;
 import com.rs.firstrestapi.survey.service.SurveyService;
 import org.springframework.http.HttpStatus;
@@ -40,7 +41,25 @@ public class SurveyResource {
         return survey;
     }
 
+    // /surveys/{surveyId}/questions => survey questions
+    @RequestMapping(value = "/surveys/{surveyId}/questions")
+    public List<Question> retrieveAllSurveyQuestions(@PathVariable String surveyId){
+        List<Question> questions = surveyService.retrieveAllSurveyQuestions(surveyId);
+        if(questions == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return questions;
+    }
 
+    // /surveys/{surveyId}/questions/{questionId} => survey questions by questionId
+    @RequestMapping(value = "/surveys/{surveyId}/questions/{questionId}")
+    public Question retrieveSpeceficSurveyQuestions(@PathVariable String surveyId,@PathVariable String questionId){
+        Question question = surveyService.retrieveSpeceficSurveyQuestions(surveyId,questionId);
+        if(question == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return question;
+    }
 
 
 }
